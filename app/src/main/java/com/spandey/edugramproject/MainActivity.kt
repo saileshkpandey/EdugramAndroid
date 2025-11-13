@@ -6,11 +6,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
-import com.spandey.edugramproject.data.UserEntity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.spandey.edugramproject.data.CourseEntity
 import com.spandey.edugramproject.data.LessonEntity
 import com.spandey.edugramproject.data.QuizEntity
 import com.spandey.edugramproject.data.QuestionEntity
+import com.spandey.edugramproject.data.UserEntity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // open ChatbotActivity when floating button clicked
+        val askDoubtFab = findViewById<FloatingActionButton>(R.id.btnAskDoubt)
+        askDoubtFab.setOnClickListener {
+            startActivity(Intent(this, ChatbotActivity::class.java))
+        }
 
         db = AppDatabase.getDB(this)
 
