@@ -35,7 +35,7 @@ data class GeminiCandidate(
 // --- Retrofit Interface for Gemini ---
 interface AIService {
     // ✅ CORRECTED: Use 'gemini-1.5-flash' in the path for the v1beta endpoint
-    @POST("v1beta/models/gemini-1.5-flash:generateContent")
+    @POST("v1beta/models/gemini-2.5-flash:generateContent")
     suspend fun getChatCompletion(
         @Query("key") apiKey: String,
         @Body request: GeminiRequest
