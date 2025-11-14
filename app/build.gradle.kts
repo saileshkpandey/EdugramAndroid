@@ -17,11 +17,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // ⚠️ For testing only — replace with your actual OpenAI API key
+        // 🔑 IMPORTANT: Never commit API keys to version control
+        // Use local.properties or environment variables in production
         buildConfigField(
             "String",
-            "OPENAI_API_KEY",
-            "\"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\""
+            "GEMINI_API_KEY",
+            "\"AIzaSyAYLn7Td-dbLoGdeHdj_UAihS_iPeFsq_o\""
         )
     }
 
@@ -46,7 +47,7 @@ android {
 
     buildFeatures {
         viewBinding = true
-        buildConfig = true  // ✅ Enable custom BuildConfig fields (fixes your error)
+        buildConfig = true  // ✅ Enable custom BuildConfig fields
     }
 }
 
@@ -68,11 +69,16 @@ dependencies {
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
 
-    // Retrofit & OkHttp (for ChatGPT API)
+    // Retrofit & OkHttp (for Gemini API)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    // Gson for JSON parsing
+    implementation("com.google.code.gson:gson:2.10.1")
 
     // Material Design
     implementation("com.google.android.material:material:1.12.0")
@@ -81,6 +87,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-
 }
