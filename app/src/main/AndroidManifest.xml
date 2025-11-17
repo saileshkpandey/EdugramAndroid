@@ -16,20 +16,27 @@
         android:theme="@style/Theme.EdugramProject"
         tools:targetApi="31">
         <activity
-            android:name=".ChatbotActivity"
-            android:exported="true"
-            android:label="Ask Me Your Doubt"
-            android:theme="@style/Theme.Material3.DayNight.NoActionBar" />
-
-        <!-- ✅ Main Activity (entry point) -->
+            android:name=".SignupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EdugramProject" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ChatbotActivity"
+            android:exported="true"
+            android:label="Ask Me Your Doubt"
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar" /> <!-- ✅ Main Activity (entry point) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity> <!-- Other activities -->
         <activity
             android:name=".CourseListActivity"
