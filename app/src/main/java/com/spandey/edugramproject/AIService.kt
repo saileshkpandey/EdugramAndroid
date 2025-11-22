@@ -10,7 +10,6 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
-// --- Data Models for Gemini API ---
 data class GeminiContent(
     val role: String? = null,
     val parts: List<GeminiPart>
@@ -32,9 +31,9 @@ data class GeminiCandidate(
     val content: GeminiContent?
 )
 
-// --- Retrofit Interface for Gemini ---
+
 interface AIService {
-    // ✅ CORRECTED: Use 'gemini-1.5-flash' in the path for the v1beta endpoint
+
     @POST("v1beta/models/gemini-2.5-flash:generateContent")
     suspend fun getChatCompletion(
         @Query("key") apiKey: String,
@@ -68,12 +67,3 @@ interface AIService {
     }
 }
 
-/*
- * OTHER WORKING MODELS:
- *
- * Gemini 1.5 Pro (slower but smarter):
- * @POST("v1beta/models/gemini-1.5-pro-latest:generateContent")
- *
- * Gemini 1.0 Pro (most stable, uses v1 not v1beta):
- * @POST("v1/models/gemini-pro:generateContent")
- */
